@@ -5,6 +5,7 @@ exports.register = async (req, res) => {
         const {name, email, password} = req.body;
         
         let user = await User.findOne({email});
+
         if(user) {
           return res 
           .status(400)
@@ -20,7 +21,7 @@ exports.register = async (req, res) => {
 
         res.status(201).json({
             success: true,
-            data: user
+            data: user,
         });
     } catch (error){
         res.status(500).json({
